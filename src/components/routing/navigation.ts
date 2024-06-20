@@ -5,6 +5,8 @@ import { Todo } from "../Todo/Todo";
 import { Posts } from "../Posts/Posts";
 import { PostCard } from "../Posts/PostCard";
 import { PostsMain } from "../Posts/PostsMain";
+import { Chart } from "../Chart/Chart";
+import { Graf } from "../Graf/Graf";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ export const router = createBrowserRouter([
       {
         path: "todos",
         Component: Todo,
+      },
+      {
+        path: "chart",
+        Component: Chart,
+      },
+      {
+        path: "graf",
+        Component: Graf,
       },
       {
         path: "posts",

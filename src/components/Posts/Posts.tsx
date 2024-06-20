@@ -3,6 +3,7 @@ import { FC, useState } from "react";
 import { addPost, fetchPosts } from "../../api/posts";
 import {
   Button,
+  Card,
   Col,
   Form,
   Input,
@@ -61,62 +62,62 @@ export const Posts: FC = () => {
     return <Result status={"error"} title={`${error}`} />;
   }
   return (
-    <>
+    <Card bordered={false}>
       {contextHolder}
-      {isFetching ? (
-        <Spin size="large" fullscreen />
-      ) : posts?.length ? (
-        <Row>
-          <Col xs={24} md={{ span: 18, offset: 3 }}>
-            <Button
-              type="primary"
-              style={{ marginBottom: 5 }}
-              size="large"
-              onClick={showModal}
-            >
-              Add Post
-            </Button>
-            <Modal
-              title="Add post"
-              open={isOpen}
-              onCancel={closeModal}
-              onOk={addNewPost}
-            >
-              <Form title="Post" form={form} layout="vertical">
-                <Form.Item<TAddPost>
-                  label="Title"
-                  name="title"
-                  required
-                  tooltip="This is a required field"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Enter a first name",
-                    },
-                  ]}
-                >
-                  <Input placeholder="Title" />
-                </Form.Item>
-                <Form.Item<TAddPost>
-                  label="Post"
-                  name="body"
-                  required
-                  tooltip="This is a required field"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Enter a first name",
-                    },
-                  ]}
-                >
-                  <Input placeholder="Post" />
-                </Form.Item>
-              </Form>
-            </Modal>
-            <PostsTable posts={posts} />
-          </Col>
-        </Row>
-      ) : null}
-    </>
+      <Spin spinning={isFetching}>
+        {posts?.length ? (
+          <Row>
+            <Col xs={24} md={{ span: 18, offset: 3 }}>
+              <Button
+                type="primary"
+                style={{ marginBottom: 5 }}
+                size="large"
+                onClick={showModal}
+              >
+                Add Post
+              </Button>
+              <Modal
+                title="Add post"
+                open={isOpen}
+                onCancel={closeModal}
+                onOk={addNewPost}
+              >
+                <Form title="Post" form={form} layout="vertical">
+                  <Form.Item<TAddPost>
+                    label="Title"
+                    name="title"
+                    required
+                    tooltip="This is a required field"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Enter a first name",
+                      },
+                    ]}
+                  >
+                    <Input placeholder="Title" />
+                  </Form.Item>
+                  <Form.Item<TAddPost>
+                    label="Post"
+                    name="body"
+                    required
+                    tooltip="This is a required field"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Enter a first name",
+                      },
+                    ]}
+                  >
+                    <Input placeholder="Post" />
+                  </Form.Item>
+                </Form>
+              </Modal>
+              <PostsTable posts={posts} />
+            </Col>
+          </Row>
+        ) : null}
+      </Spin>
+    </Card>
   );
 };

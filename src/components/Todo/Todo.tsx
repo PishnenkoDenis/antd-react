@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { Col, Result, Row, Slider, Spin, Typography } from "antd";
 import { ITodo, fetchTodos } from "../../api/todos";
 import { TodoTable } from "./TodoTable";

@@ -18,6 +18,12 @@ export const MainLayout: FC = () => {
           <Menu.Item key={"Posts"}>
             <Link to={"/posts"}>Posts</Link>
           </Menu.Item>
+          <Menu.Item key={"Chart"}>
+            <Link to={"/chart"}>Chart</Link>
+          </Menu.Item>
+          <Menu.Item key={"Graf"}>
+            <Link to={"/graf"}>Graph</Link>
+          </Menu.Item>
         </Menu>
       </Header>
       <Content
